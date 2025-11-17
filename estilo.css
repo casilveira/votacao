@@ -1,0 +1,150 @@
+/* estilo.css */
+
+/* Reset simples */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient-start: #0f172a;
+    --bg-gradient-end: #1e293b;
+    --card-bg: #0b1120;
+    --primary: #38bdf8;
+    --primary-hover: #0ea5e9;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border-soft: rgba(148, 163, 184, 0.4);
+    --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.85);
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --transition-fast: 0.2s ease-out;
+    --transition-med: 0.35s ease;
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Fundo geral da página */
+body {
+    font-family: var(--font-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top left, #22d3ee 0, transparent 45%),
+                radial-gradient(circle at bottom right, #6366f1 0, transparent 55%),
+                linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-main);
+    padding: 24px;
+}
+
+/* “Cartão” principal (usando o próprio form) */
+form {
+    background: radial-gradient(circle at top, rgba(148, 163, 184, 0.2), transparent 60%),
+                var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 26px 26px 22px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Linha decorativa no topo do card */
+form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #22d3ee, #38bdf8, #a855f7, #f97316);
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+/* Conteúdo por cima do efeito */
+form > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Título */
+h2 {
+    font-size: 1.35rem;
+    text-align: center;
+    margin-bottom: 18px;
+    color: #f9fafb;
+    letter-spacing: 0.03em;
+}
+
+/* Texto das opções (como não há <label>, vamos melhorar espaçamento) */
+form br {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Container das opções (usa o próprio form) */
+input[type="radio"] {
+    accent-color: var(--primary);
+    transform: scale(1.05);
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+/* Deixar o texto das opções mais legível */
+input[type="radio"] + * {
+    color: var(--text-main);
+}
+
+/* Tipografia geral no card */
+form {
+    font-size: 0.95rem;
+}
+
+/* Botão */
+button[type="submit"] {
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 11px 18px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #0b1120;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    box-shadow: 0 14px 35px rgba(56, 189, 248, 0.55);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast),
+        background-position 0.4s ease-out;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+}
+
+/* Estados do botão */
+button[type="submit"]:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 18px 45px rgba(56, 189, 248, 0.7);
+    filter: brightness(1.05);
+    background-position: 100% 50%;
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+    filter: brightness(0.95);
+}
+
+/* Pequeno rodapé opcional, caso queira adicionar no HTML depois */
+.footer-info {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
